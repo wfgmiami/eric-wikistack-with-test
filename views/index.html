@@ -1,0 +1,36 @@
+{% extends './layout.html' %}
+{% block content %}
+  <h2>All Stories</h2>
+  <div>
+    <form method='POST' action='/stories'>
+      <div>
+        <label>User</label>
+        <br />
+        <input name='name' />
+      </div>
+      <div>
+        <label>Title</label>
+        <br />
+        <input name='title' />
+      </div>
+      <div>
+        <label>Content</label>
+        <br />
+        <textarea name='content' rows='5'></textarea>
+      </div>
+      <div>
+        <label>Tags</label>
+        <br />
+        <input name='tags' />
+      </div>
+      <div>
+        <button type='submit'>Save</button>
+      </div>
+    </form>
+  </div>
+  <ul>
+    {% for story in stories %}
+      {% include './_storyListItem.html' with { story: story, user: story.user } %}
+    {% endfor %}
+  </ul>
+{% endblock %}

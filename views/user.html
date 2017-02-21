@@ -1,0 +1,9 @@
+{% extends './layout.html' %}
+{% block content %}
+  <h2>Stories by {{ user.name }}</h2>
+  <ul>
+    {% for story in user.stories %}
+      {% include './_storyListItem.html' with { story: story, user: user } %}
+    {% endfor %}
+  </ul>
+{% endblock %}
